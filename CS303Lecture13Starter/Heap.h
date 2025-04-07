@@ -53,6 +53,7 @@ void Heap<ItemType>::heapInsert(ItemType item) {
 
 }
 
+//TASK 3: HEAPREMOVE
 //PRE: None
 //POST: removes the maximum element from the heap
 template <typename ItemType>
@@ -66,69 +67,61 @@ void Heap<ItemType>::heapRemove() {
 		return;
 	}
 	//swap last element and first element & pop back
-	swap(theHeap[0], theHeap[theHeap.size() - 1]);
-	theHeap.pop_back();
 
 	//restore 'heapness'
+	//starting with root (parent = 0)
 	int parent = 0, right = 0, max = 0;
-	int left = 2 * parent + 1;
 
+	//set left child
 
+	//while (left < heapsize())
 	while (left < theHeap.size()) {
-		right = left + 1;
-		// find max child and swap it with parent
-		if (right < theHeap.size() &&
-			theHeap[right] > theHeap[left])
-			max = right;
-		else
-			max = left;
+		//set right child
 
-		if (theHeap[parent] < theHeap[max]) {
-			swap(theHeap[max], theHeap[parent]);
-			parent = max;
-		}
-		else
-			break; // the heap is not out of order
-		left = 2 * parent + 1;
-  }
+		// find max child 
 
 
+
+		//swap max with the parent
+		//set parent to the max
+
+
+		//reset left child of current parent
+	}
 }
  
+//TASK 4
 //PRE: None - assumes theHeap is an unsorted vector of data
 //POST: sorts theHeap
 template <typename ItemType>
 void Heap<ItemType>::heapSort() {
+
 	//if there are no items, return
 	int theHeapSize = theHeap.size();
 	if (theHeapSize == 0)
 		return;
 
-	//build the max heap correct the heap from bottom up
-	for (int i = theHeapSize / 2 - 1; i >= 0; --i) {
-		int parent = i;
-		cout << endl << endl;
-		while (true) {
-			heapPrint();
-			int max = parent;
-			int left = 2 * parent + 1;
-			int right = left + 1;
+	//start at heapsize/2-1 (last parent) to 0
+		for (int i = theHeapSize / 2 - 1; i >= 0; --i) {
+			//while true
+			//set parent (current max)
+			// and left & right children
 
-			if (left < theHeapSize && theHeap[left] > theHeap[max])
-				max = left;
+			while (true) {
+				//if valid position
+				//set max child (if either child > current max)
 
-			if (right < theHeapSize && theHeap[right] > theHeap[max])
-				max = right;
 
-			if (max != parent) {
-				swap(theHeap[parent], theHeap[max]);
-				parent = max; // Move down the tree
+				//if max position is not the parent
+				//swap max and parent
+				//reset parent to current max
+				if (max != parent) {
+					swap(theHeap[parent], theHeap[max]);
+					parent = max; // Move down the tree
+				}
+				else 
+					break; // Heap property restored
 			}
-			else 
-				break; // Heap property restored
-
-
 		}
-	}
  
 }

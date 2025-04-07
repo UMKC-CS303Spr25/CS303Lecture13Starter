@@ -39,7 +39,7 @@ int main() {
 	vector<int> theData = { 6,29,28,18,26,20,66,39,32,37,74,76,80 };
 	//vector<int> theData = { 6,29,28,18,26,20,66,2 };
 	myHeap.setHeap(theData);
-	myHeap.heapSort();
+	myHeap.heapSort();       //TASK 4
 	myHeap.heapPrint();
 
 }
